@@ -24,8 +24,10 @@ const feladat2 = [
     /\becl:(grn|blu|brn|hzl|oth|amb|gry)\b/
 ];
 console.log(kartyak);
-const megoldas1 = kartyak.reduce((rendben, kartya) => rendben + (feladat1.find(mezo => !mezo.test(kartya)) === undefined ? 1 : 0), 0);
-const megoldas2 = kartyak.reduce((rendben, kartya) => rendben + (feladat2.find(mezo => !mezo.test(kartya)) === undefined ? 1 : 0), 0);
+// const megoldas1 = kartyak.reduce((rendben, kartya) => rendben + (feladat1.find(mezo => !mezo.test(kartya)) === undefined ? 1 : 0), 0);
+const megoldas1 = kartyak.filter(kartya => feladat1.find(mezo => !mezo.test(kartya)) === undefined).length;
+// const megoldas2 = kartyak.reduce((rendben, kartya) => rendben + (feladat2.find(mezo => !mezo.test(kartya)) === undefined ? 1 : 0), 0);
+const megoldas2 = kartyak.filter(kartya => feladat2.find(mezo => !mezo.test(kartya)) === undefined).length;
 console.log({ osszesen: kartyak.length, megoldas1, megoldas2 });
 
 const app = express();
